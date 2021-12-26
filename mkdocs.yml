@@ -48,7 +48,6 @@ markdown_extensions:
 # https://github.com/zhaoterryy/mkdocs-pdf-export-plugin not working
 plugins:
   - search
-  - git-revision-date-localized
   # - pdf-export
   # - pdf-export:
   #     combined: true
