@@ -22,7 +22,7 @@ The mediator comes with a single API that can be triggered to push data to RITA.
   * - $createdBy
     - extension.find(e=>e.url=="http://openiz.org/fhir/extension/rim/relationship/CreatedBy").valueReference.reference
 
-.. list-table:: Mappings
+.. list-table:: RITA-FHIR Mappings
 
   * - RITA DATA Element
     - RITA Data in FHIR (TImR)
