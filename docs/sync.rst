@@ -46,16 +46,24 @@ The mediator comes with a single API that can be triggered to push data to RITA.
     - birthDate
 
   * - birth_place_id
-    - extension.find(e => e.url == "http://openiz.org/extensions/patient/contrib/timr/birthPlaceType").valueDecimal
+    - extension.find(|br|
+      e => e.url == "http://openiz.org/extensions/patient/contrib/timr/birthPlaceType"|br|
+      ).valueDecimal
 
   * - health_facility_id
-    - extension.find(e => e.url == "http://openiz.org/fhir/extension/rim/relationship/DedicatedFacilty").valueIdentifier.value
+    - extension.find(|br|
+      e => e.url=="http://openiz.org/fhir/extension/rim/relationship/DedicatedFacilty"|br|
+      ).valueIdentifier.value
 
   * - child_birth_place_village_id
-    - extension.find(e => e.url == "http://openiz.org/fhir/extension/rim/relationship/Birthplace").valueIdentifier.value
+    - extension.find(|br|
+      e => e.url == "http://openiz.org/fhir/extension/rim/relationship/Birthplace"|br|
+      ).valueIdentifier.value
 
   * - delivery_witness_id
-    - extension.find(e => e.url == "http://openiz.org/extensions/contrib/timr/birthAttendant").valueDecimal
+    - extension.find(|br|
+      e => e.url == "http://openiz.org/extensions/contrib/timr/birthAttendant"|br|
+      ).valueDecimal
 
   * - mother_first_name
     - $mother.name[0].given[0]
@@ -67,37 +75,57 @@ The mediator comes with a single API that can be triggered to push data to RITA.
     - $mother.name[0].family
 
   * - mother_national_identity_number
-    - $mother.identifier.find(id => id.system == "http://ivd.moh.go.tz/timr/nid").value
+    - $mother.identifier.find(|br|
+      id => id.system == "http://ivd.moh.go.tz/timr/nid"|br|
+      ).value
 
   * - mother_date_of_birth
     - $mother.birthDate
 
   * - mother_country_birth_id
-    - $mother.extension.find(e => e.url == "http://openiz.org/fhir/extension/rim/relationship/Birthplace").valueIdentifier.value
+    - $mother.extension.find(|br|
+      e => e.url == "http://openiz.org/fhir/extension/rim/relationship/Birthplace"|br|
+      ).valueIdentifier.value
 
   * - mother_nationality_id
-    - $mother.extension.find(e => e.url == "http://openiz.org/fhir/extension/rim/relationship/Citizen").valueCode
+    - $mother.extension.find(|br|
+      e => e.url == "http://openiz.org/fhir/extension/rim/relationship/Citizen"|br|
+      ).valueCode
 
   * - mother_education_id
-    - $mother.extension.find(e => e.url == "http://openiz.org/extensions/contrib/timr/socialIndicators/education").valueCodeableConcept.coding[0].code
+    - $mother.extension.find(|br|
+      e=>e.url=="http://openiz.org/extensions/contrib/timr/socialIndicators/education"|br|
+      ).valueCodeableConcept.coding[0].code
 
   * - mother_occupation_id
-    - $mother.extension.find(e => e.url == "http://openiz.org/extensions/contrib/timr/socialIndicators/occupation").valueCodeableConcept.coding[0].code
+    - $mother.extension.find(|br|
+      e=>e.url=="http://openiz.org/extensions/contrib/timr/socialIndicators/occupation"|br|
+      ).valueCodeableConcept.coding[0].code
 
   * - mother_village_id
-    - $mother.address.find(addr => addr.extension.find(e=>e.url == "http://openiz.org/fhir/profile#address-CensusTract").valueString)
+    - $mother.address.find(|br|
+      addr => addr.extension.find(e=>e.url=="http://openiz.org/fhir/profile#address-CensusTract"|br|
+      ).valueString)
 
   * - father_education_id
-    - $father.extension.find(e => e.url == "http://openiz.org/extensions/contrib/timr/socialIndicators/education").valueCodeableConcept.coding[0].code
+    - $father.extension.find(|br|
+      e=>e.url=="http://openiz.org/extensions/contrib/timr/socialIndicators/education"|br|
+      ).valueCodeableConcept.coding[0].code
 
   * - father_occupation_id
-    - $father.extension.find( e => e.url == "http://openiz.org/extensions/contrib/timr/socialIndicators/occupation" ).valueCodeableConcept.coding[0].code
+    - $father.extension.find(|br|
+      e=>e.url=="http://openiz.org/extensions/contrib/timr/socialIndicators/occupation"|br|
+      ).valueCodeableConcept.coding[0].code
 
   * - father_nationality_id
-    - $father.extension.find(e => e.url == "http://openiz.org/fhir/extension/rim/relationship/Citizen").valueCode
+    - $father.extension.find(|br|
+      e => e.url == "http://openiz.org/fhir/extension/rim/relationship/Citizen"|br|
+      ).valueCode
 
   * - father_country_birth_id
-    - $father.extension.find(e => e.url == "http://openiz.org/fhir/extension/rim/relationship/Birthplace").valueIdentifier.value
+    - $father.extension.find(|br|
+      e => e.url == "http://openiz.org/fhir/extension/rim/relationship/Birthplace"|br|
+      ).valueIdentifier.value
 
   * - father_first_name
     - $father.name[0].given[0]
@@ -115,22 +143,34 @@ The mediator comes with a single API that can be triggered to push data to RITA.
     - $father.identifier.find(id => id.system == "http://ivd.moh.go.tz/timr/nid").value
 
   * - father_village_id
-    - $father.address.find(addr => addr.extension.find(e=>e.url == "http://openiz.org/fhir/profile#address-CensusTract").valueString)
+    - $father.address.find(|br|
+      addr => addr.extension.find(e=>e.url == "http://openiz.org/fhir/profile#address-CensusTract"|br|
+      ).valueString)
 
   * - number_of_pregnancy
-    - $mother.extension.find(e => e.url == "http://openiz.org/extensions/contrib/timr/pregnancyStatus/previousPregnancies").valueDecimal
+    - $mother.extension.find(|br|
+      e=>e.url=="http://openiz.org/extensions/contrib/timr/pregnancyStatus/previousPregnancies"|br|
+      ).valueDecimal
 
   * - number_of_children
-    - $mother.extension.find(e => e.url == "http://openiz.org/extensions/contrib/timr/pregnancyStatus/previousPregnancies").valueDecimal
+    - $mother.extension.find(|br|
+      e=>e.url=="http://openiz.org/extensions/contrib/timr/pregnancyStatus/previousPregnancies"|br|
+      ).valueDecimal
 
   * - number_of_children_safe_delivery
-    - $mother.extension.find(e => e.url == "http://openiz.org/extensions/contrib/timr/pregnancyStatus/liveBirths").valueDecimal
+    - $mother.extension.find(|br|
+      e=>e.url=="http://openiz.org/extensions/contrib/timr/pregnancyStatus/liveBirths"|br|
+      ).valueDecimal
 
   * - number_death_before_delivery
-    - $mother.extension.find(e => e.url == "http://openiz.org/extensions/contrib/timr/pregnancyStatus/preNatalDeaths").valueDecimal
+    - $mother.extension.find(|br|
+      e=>e.url=="http://openiz.org/extensions/contrib/timr/pregnancyStatus/preNatalDeaths"|br|
+      ).valueDecimal
 
   * - month_of_pregnancy
-    - $mother.extension.find(e => e.url == "http://openiz.org/extensions/contrib/timr/pregnancyStatus/monthsCaring").valueDecimal
+    - $mother.extension.find(|br|
+      e=>e.url=="http://openiz.org/extensions/contrib/timr/pregnancyStatus/monthsCaring"|br|
+      ).valueDecimal
 
   * - informant_first_name
     - $informant.name[0].given[0]
@@ -151,13 +191,17 @@ The mediator comes with a single API that can be triggered to push data to RITA.
     - contained.find(c=>c.id == $informant.id).relationship.coding[0].code
 
   * - informant_permanent_residence_village_id
-    - $informant.address.find(addr => addr.extension.find(e=>e.url == "http://openiz.org/fhir/profile#address-CensusTract").valueString)
+    - $informant.address.find(|br|
+      addr => addr.extension.find(e=>e.url == "http://openiz.org/fhir/profile#address-CensusTract"|br|
+      ).valueString)
 
   * - date_of_informant
     - $informant.meta.lastUpdated
 
   * - registration_centre_id
-    - extension.find(e => e.url == "http://openiz.org/fhir/extension/rim/relationship/RegistrationFacility").valueIdentifier.value
+    - extension.find(|br|
+      e => e.url == "http://openiz.org/fhir/extension/rim/relationship/RegistrationFacility"|br|
+      ).valueIdentifier.value
 
   * - register_date
     - meta.lastUpdated
@@ -175,3 +219,7 @@ The mediator comes with a single API that can be triggered to push data to RITA.
   #. registrar_first_name
   #. registrar_second_name
   #. registrar_last_name
+
+  .. |br| raw:: html
+
+     <br>
