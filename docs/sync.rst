@@ -1,5 +1,5 @@
-Data synchronization
-====================
+Data synchronization - Tabular
+==============================
 The mediator comes with a single API that can be triggered to push data to RITA. The name of the API is /pushPatients which supports the POST method. This end point pulls data from TImR using FHIR standard which then it converts these data to RITA format and finally sends the converted data to RITA.
 
 *Below are the data elements that are currently being sent to RITA*

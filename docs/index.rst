@@ -8,3 +8,4 @@ Welcome to TImR and RITA Sync Mediator's documentation!
    configuration
    running
    sync
+   synclist
